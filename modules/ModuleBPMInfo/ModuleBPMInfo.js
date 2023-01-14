@@ -9,13 +9,15 @@
 
 function bpmsaveinfo(module, return_id, mode, saveinfo) {
 	let sinfo = JSON.parse(decodeURIComponent(saveinfo));
-	sinfo.tostate = decodeURIComponent(sinfo.tostate.replace(/\+/g, ' '));
-	if (sinfo.editmode) {
-		document.getElementById(sinfo.fieldName).value = sinfo.tostate;
-	} else {
-		var txtBox = 'txtbox_'+sinfo.fieldName;
-		document.getElementById(txtBox).value = sinfo.tostate;
-		document.getElementById('cbcustominfo2').value = sinfo.pflowid;
-		dtlViewAjaxSave(sinfo.fieldName, sinfo.bpmmodule, sinfo.uitype, '', sinfo.fieldName, sinfo.bpmrecord);
+	if (sinfo.tostate) {
+		sinfo.tostate = decodeURIComponent(sinfo.tostate.replace(/\+/g, ' '));
+		if (sinfo.editmode) {
+			document.getElementById(sinfo.fieldName).value = sinfo.tostate;
+		} else {
+			var txtBox = 'txtbox_'+sinfo.fieldName;
+			document.getElementById(txtBox).value = sinfo.tostate;
+			document.getElementById('cbcustominfo2').value = sinfo.pflowid;
+			dtlViewAjaxSave(sinfo.fieldName, sinfo.bpmmodule, sinfo.uitype, '', sinfo.fieldName, sinfo.bpmrecord);
+		}
 	}
 }
