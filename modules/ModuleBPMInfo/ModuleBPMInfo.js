@@ -18,6 +18,11 @@ function bpmsaveinfo(module, return_id, mode, saveinfo) {
 			document.getElementById(txtBox).value = sinfo.tostate;
 			document.getElementById('cbcustominfo2').value = sinfo.pflowid;
 			dtlViewAjaxSave(sinfo.fieldName, sinfo.bpmmodule, sinfo.uitype, '', sinfo.fieldName, sinfo.bpmrecord);
+			if (sinfo.redirectto != '') {
+				setTimeout(function () {
+					window.location.href = sinfo.redirectto;
+				}, 1000);
+			}
 		}
 	}
 }
